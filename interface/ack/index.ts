@@ -1,8 +1,8 @@
 import {ChannelTypes} from '..';
-import {MinecraftAck} from './minecraft';
-import {RaidAck} from './raid';
-import {SonosAck} from './sonos';
-import {WeatherAck} from './weather';
+import {Ack as MinecraftAck} from '../minecraft';
+import {Ack as RaidAck} from '../raid';
+import {Ack as SonosAck} from '../sonos';
+import {Ack as WeatherAck} from '../weather';
 
 export interface IAck<T = string> {
 	readonly _ack: T;

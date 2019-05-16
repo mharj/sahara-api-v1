@@ -1,11 +1,21 @@
 import {ChannelEnum, IChannel} from '.';
+import {ChannelAck} from './ack';
+import {ChannelAct} from './act';
+import {ChannelData} from './data';
+import {ChannelError} from './error';
 
 // Actions
 export enum Action {
 	SUB = 'sub',
 	UNSUB = 'unsub',
+	DATA = 'data',
 }
 
 export interface IMinecraftChannel extends IChannel<ChannelEnum> {
 	_channel: ChannelEnum.MINECRAFT;
 }
+
+export type Ack = ChannelAck<IMinecraftChannel, Action>;
+export type Act = ChannelAct<IMinecraftChannel, Action>;
+export type Error = ChannelError<IMinecraftChannel, Action>;
+export type Data = ChannelData<IMinecraftChannel, Action>;

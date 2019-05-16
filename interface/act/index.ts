@@ -1,8 +1,8 @@
 import {ChannelTypes} from '..';
-import {MinecraftAct} from './minecraft';
-import {RaidAct} from './raid';
-import {SonosAct} from './sonos';
-import {WeatherAct} from './weather';
+import {Act as MinecraftAct} from '../minecraft';
+import {Act as RaidAct} from '../raid';
+import {Act as SonosAct} from '../sonos';
+import {Act as WeatherAct} from '../weather';
 
 export interface IAct<T = string> {
 	readonly _act: T;
