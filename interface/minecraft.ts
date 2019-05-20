@@ -9,6 +9,8 @@ export enum Action {
 	SUB = 'sub',
 	UNSUB = 'unsub',
 	DATA = 'data',
+	ADD = 'add',
+	DELETE = 'del',
 }
 
 export interface IMinecraftChannel extends IChannel<ChannelEnum> {
