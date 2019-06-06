@@ -2,6 +2,7 @@ import {ChannelTypes} from '..';
 import {Ack as MinecraftAck} from '../minecraft';
 import {Ack as RaidAck} from '../raid';
 import {Ack as ServiceAck} from '../service';
+import {Ack as SessionAck} from '../session'
 import {Ack as SonosAck} from '../sonos';
 import {Ack as WeatherAck} from '../weather';
 
@@ -11,4 +12,4 @@ export interface IAck<T = string> {
 
 export type ChannelAck<C extends ChannelTypes, T> = IAck<T> & C;
 
-export type AckTypes = WeatherAck | SonosAck | MinecraftAck | RaidAck | ServiceAck;
+export type AckTypes = WeatherAck | SonosAck | MinecraftAck | RaidAck | ServiceAck | SessionAck;
