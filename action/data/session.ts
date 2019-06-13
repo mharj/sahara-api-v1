@@ -1,8 +1,8 @@
 import {ChannelEnum} from '../../interface';
-import {Action, Data, ISessionData} from '../../interface/session';
+import {Action, Data} from '../../interface/session';
 
 // Act Actions
 
-export const sessionListAction = (payload: ISessionData[]): Data => {
-	return {_channel: ChannelEnum.SESSION, _data: Action.LIST, payload};
+export const data = (action: Action): Data => {
+	return {_channel: ChannelEnum.SESSION, _data: action};
 };
