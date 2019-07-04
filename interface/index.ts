@@ -5,6 +5,10 @@ import {ISessionChannel} from './session';
 import {ISonosChannel} from './sonos';
 import {IWeatherChannel} from './weather';
 
+export interface IMongoDocument {
+	readonly _id: string;
+}
+
 export enum ChannelEnum {
 	SONOS = 'sonos',
 	RAID = 'raid',
