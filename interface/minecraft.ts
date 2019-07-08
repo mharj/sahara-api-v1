@@ -1,4 +1,5 @@
 import {ChannelEnum, IChannel} from '.';
+import {IMinecraft} from '../../schemas/minecraft';
 import {ChannelAck} from './ack';
 import {ChannelAct} from './act';
 import {ChannelData} from './data';
@@ -20,4 +21,10 @@ export interface IMinecraftChannel extends IChannel<ChannelEnum> {
 export type Ack = ChannelAck<IMinecraftChannel, Action>;
 export type Act = ChannelAct<IMinecraftChannel, Action>;
 export type Error = ChannelError<IMinecraftChannel, Action>;
-export type Data = ChannelData<IMinecraftChannel, Action>;
+// export type Data = ChannelData<IMinecraftChannel, Action>;
+
+type DataListAction = ChannelData<IMinecraftChannel, Action.DATA> & {
+	payload: IMinecraft[];
+};
+
+export type Data = DataListAction;
