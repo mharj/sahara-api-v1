@@ -1,9 +1,15 @@
 import {ChannelEnum, IChannel} from '.';
-import {IMinecraft} from '../../schemas/minecraft';
 import {ChannelAck} from './ack';
 import {ChannelAct} from './act';
 import {ChannelData} from './data';
 import {ChannelError} from './error';
+
+export interface IMinecraft {
+	disabled: boolean;
+	readonly uuid: string;
+	name: string;
+	port: number;
+}
 
 // Actions
 export enum Action {
@@ -12,19 +18,27 @@ export enum Action {
 	DATA = 'data',
 	ADD = 'add',
 	DELETE = 'del',
+	LIST = 'list'
 }
 
 export interface IMinecraftChannel extends IChannel<ChannelEnum> {
 	_channel: ChannelEnum.MINECRAFT;
 }
 
-export type Ack = ChannelAck<IMinecraftChannel, Action>;
-export type Act = ChannelAct<IMinecraftChannel, Action>;
-export type Error = ChannelError<IMinecraftChannel, Action>;
-// export type Data = ChannelData<IMinecraftChannel, Action>;
+export type AckKeys = ChannelAck<IMinecraftChannel, Action>;
+export type ActKeys = ChannelAct<IMinecraftChannel, Action>;
+export type ErrorKeys = ChannelError<IMinecraftChannel, Action>;
+export type DataKeys = ChannelData<IMinecraftChannel, Action>;
 
+/**
+ * TODO: this should be public server output!
+ */
 type DataListAction = ChannelData<IMinecraftChannel, Action.DATA> & {
 	payload: IMinecraft[];
 };
 
-export type Data = DataListAction;
+type ListAction = ChannelData<IMinecraftChannel, Action.LIST> & {
+	payload: IMinecraft[];
+};
+
+export type DataActions = DataListAction | ListAction;

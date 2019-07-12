@@ -1,7 +1,7 @@
 import {ChannelEnum} from '../../interface';
-import {Action, Error} from '../../interface/minecraft';
+import {Action, ErrorKeys} from '../../interface/minecraft';
 
 // Error Actions
-export const error = (action: Action): Error => {
+export const error = (action: Action): ErrorKeys => {
 	return {_channel: ChannelEnum.MINECRAFT, _error: action};
 };

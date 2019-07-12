@@ -32,8 +32,8 @@ export interface ISessionData extends IMongoDocument {
 	picture: string | undefined;
 }
 
-export type Ack = ChannelAck<ISessionChannel, Action>;
-export type Act = ChannelAct<ISessionChannel, Action>;
-export type Error = ChannelError<ISessionChannel, Action>;
-export type Data = DataListAction | DataDeleteAction | DataSubAction | DataUnSubAction;
-// export type Data = ChannelData<ISessionChannel, Action>  | DataDeleteAction;
+export type AckKeys = ChannelAck<ISessionChannel, Action>;
+export type ActKeys = ChannelAct<ISessionChannel, Action>;
+export type ErrorKeys = ChannelError<ISessionChannel, Action>;
+export type DataKeys = ChannelData<ISessionChannel, Action>  | DataDeleteAction;
+export type DataActions = DataListAction | DataDeleteAction | DataSubAction | DataUnSubAction;

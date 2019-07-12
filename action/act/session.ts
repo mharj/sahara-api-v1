@@ -1,7 +1,7 @@
 import {ChannelEnum} from '../../interface';
-import {Act, Action} from '../../interface/session';
+import {ActKeys, Action} from '../../interface/session';
 
 // Act Actions
-export const act = (action: Action): Act => {
+export const act = (action: Action): ActKeys => {
 	return {_channel: ChannelEnum.SESSION, _act: action};
 };

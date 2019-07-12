@@ -22,4 +22,9 @@ export interface IChannel<C = string> {
 	readonly _channel: C;
 }
 
+export type LeanMongoDocument<T> = T & {
+	readonly _id: any;
+	readonly __v?: number;
+};
+
 export type ChannelTypes = IWeatherChannel | ISonosChannel | IRaidChannel | IMinecraftChannel | IServiceChannel | ISessionChannel;
