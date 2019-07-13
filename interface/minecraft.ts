@@ -18,7 +18,7 @@ export enum Action {
 	DATA = 'data',
 	ADD = 'add',
 	DELETE = 'del',
-	LIST = 'list'
+	LIST = 'list',
 }
 
 export interface IMinecraftChannel extends IChannel<ChannelEnum> {
@@ -41,4 +41,8 @@ type ListAction = ChannelData<IMinecraftChannel, Action.LIST> & {
 	payload: IMinecraft[];
 };
 
-export type DataActions = DataListAction | ListAction;
+type DeleteAction = ChannelData<IMinecraftChannel, Action.DELETE> & {
+	uuid: string;
+};
+
+export type DataActions = DataListAction | DeleteAction | ListAction;

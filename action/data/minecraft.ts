@@ -13,3 +13,7 @@ export const minecraftListAction = (payload: IMinecraft[]): DataActions => {
 export const MinecraftPayloadAction = (payload: IMinecraft[]): DataActions => {
 	return {_channel: ChannelEnum.MINECRAFT, _data: Action.DATA, payload};
 };
+
+export const MinecraftDeleteAction = (uuid: string): DataActions => {
+	return {_channel: ChannelEnum.MINECRAFT, _data: Action.DELETE, uuid};
+};
