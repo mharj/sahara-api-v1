@@ -1,8 +1,8 @@
 import {ChannelTypes} from '..';
-import {Error as MinecraftError} from '../minecraft';
+import {ErrorKeys as MinecraftError} from '../minecraft';
 import {Error as RaidError} from '../raid';
 import {Error as ServiceError} from '../service';
-import {Error as SessionError} from '../session';
+import {ErrorKeys as SessionError} from '../session';
 import {Error as SonosError} from '../sonos';
 import {Error as WeatherError} from '../weather';
 

@@ -1,5 +1,5 @@
 import {ChannelEnum} from '../../interface';
-import {Action, DataKeys, ISessionData, DataActions} from '../../interface/session';
+import {Action, DataActions, DataKeys, ISessionData} from '../../interface/session';
 
 // Act Actions
 

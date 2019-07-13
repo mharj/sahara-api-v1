@@ -1,5 +1,5 @@
 import {ChannelEnum} from '../../interface';
-import {ActKeys, Action} from '../../interface/minecraft';
+import {Action, ActKeys} from '../../interface/minecraft';
 
 // Act Actions
 export const act = (action: Action): ActKeys => {
