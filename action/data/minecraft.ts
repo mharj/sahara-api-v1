@@ -1,5 +1,5 @@
 import {ChannelEnum} from '../../interface';
-import {Action, DataKeys, IMinecraft, DataActions} from '../../interface/minecraft';
+import {Action, DataActions, DataKeys, IMinecraft} from '../../interface/minecraft';
 
 // Error Actions
 export const data = (action: Action): DataKeys => {

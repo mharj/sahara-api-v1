@@ -1,8 +1,8 @@
 import {ChannelTypes} from '..';
-import {Data as MinecraftData} from '../minecraft';
+import {DataKeys as MinecraftData} from '../minecraft';
 import {Data as RaidData} from '../raid';
 import {Data as ServiceData} from '../service';
-import {Data as SessionData} from '../session';
+import {DataKeys as SessionData} from '../session';
 import {Data as SonosData} from '../sonos';
 import {Data as WeatherData} from '../weather';
 

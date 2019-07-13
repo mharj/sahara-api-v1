@@ -1,8 +1,8 @@
 import {ChannelTypes} from '..';
-import {Ack as MinecraftAck} from '../minecraft';
+import {AckKeys as MinecraftAck} from '../minecraft';
 import {Ack as RaidAck} from '../raid';
 import {Ack as ServiceAck} from '../service';
-import {Ack as SessionAck} from '../session'
+import {AckKeys as SessionAck} from '../session'
 import {Ack as SonosAck} from '../sonos';
 import {Ack as WeatherAck} from '../weather';
 
