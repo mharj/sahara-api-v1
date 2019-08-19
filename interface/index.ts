@@ -21,6 +21,9 @@ export enum ChannelEnum {
 export interface IChannel<C = string> {
 	readonly _channel: C;
 }
+export interface IChannelKey {
+	readonly _channel: ChannelEnum;
+}
 
 export type LeanMongoDocument<T> = T & {
 	readonly _id: any;

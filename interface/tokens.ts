@@ -6,7 +6,7 @@ export interface IAccessTokenPayload {
 	nonce: string;
 	roles: string[];
 	scope: string;
-	sid: string;
+	sid?: string;
 }
 
 export interface IAccessTokenResponse {
