@@ -3,5 +3,6 @@ export interface IApplication {
 	clientId: string;
 	homepage: string;
 	logo?: string;
+	allow_id_token_exchange?: true;
 	redirect_uris: string[];
 }
