@@ -9,6 +9,8 @@ export interface IMinecraft {
 	readonly uuid: string;
 	name: string;
 	port: number;
+	visible: boolean;
+	index: number;
 }
 
 // Actions
