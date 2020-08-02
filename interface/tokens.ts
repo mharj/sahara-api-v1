@@ -16,6 +16,10 @@ export interface IAccessTokenResponse {
 	expires_in: number;
 }
 
+export const isValidTokenResponse = (data: any): data is IAccessTokenResponse => {
+	return data && 'access_token' in data && 'token_type' in data && 'expires_in' in data;
+};
+
 export interface IAccessTokenExchangeResponse extends IAccessTokenResponse {
 	issued_token_type: string;
 }

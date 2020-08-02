@@ -1,3 +1,6 @@
+import {isValidTokenResponse} from '../interface/tokens';
+import {CommonClient} from './common';
+
 interface IClientCredentials {
 	grant_type: 'client_credentials';
 	nonce?: string;
@@ -16,18 +19,19 @@ interface IPasswordGrant {
 	client_id: string;
 }
 
-interface IProps {
-	issuerUrl: string;
-	fetchClient?: typeof fetch;
+export interface IRefreshGrant {
+	client_id: string;
+	refresh_token: string;
+	nonce: string;
 }
 
-export class AuthClient {
-	private fetchClient: typeof fetch;
-	private issuerUrl: string;
-	constructor({issuerUrl, fetchClient}: IProps) {
-		this.fetchClient = fetchClient || fetch;
-		this.issuerUrl = issuerUrl;
-	}
+export interface IAuthKeys {
+	readonly accessToken: string;
+	readonly refreshToken: string | undefined;
+	readonly clientId: string;
+}
+
+export class AuthClient extends CommonClient {
 	public async authClientCredentials({
 		clientId,
 		clientSecret,
@@ -62,12 +66,16 @@ export class AuthClient {
 		if (res.status !== 200) {
 			throw new Error('http error:' + res.status);
 		}
-		return res.json();
+		const data = await res.json();
+		if (!isValidTokenResponse(data)) {
+			throw new Error('server not respond valid token response');
+		}
+		return data;
 	}
 	public async authPassword(
 		{username, password, clientId, nonce, scope}: {clientId: string; username: string; scope: string; password: string; nonce?: string},
 		appToken: string,
-	) {
+	): Promise<IAuthKeys> {
 		const payload: IPasswordGrant = {
 			client_id: clientId,
 			grant_type: 'password',
@@ -88,10 +96,14 @@ export class AuthClient {
 		if (res.status !== 200) {
 			throw new Error('http error:' + res.status);
 		}
-		return res.json();
-	}
-	private async getConfig() {
-		const res = await this.fetchClient(`${this.issuerUrl}/.well-known/openid-configuration`);
-		return res.json();
+		const data = await res.json();
+		if (!isValidTokenResponse(data)) {
+			throw new Error('server not respond valid token response');
+		}
+		return {
+			accessToken: data.access_token,
+			clientId,
+			refreshToken: data.refresh_token,
+		};
 	}
 }
