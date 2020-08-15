@@ -32,8 +32,9 @@ export interface IHandshakeData {
 	};
 	favicon?: string;
 }
-export interface IMinecraftData extends IHandshakeData {
-	ping: number;
+export interface IMinecraftData {
+	uuid: string;
+	data: IHandshakeData;
 }
 
 export interface IMinecreaftRequest extends IWebsocketRequestBase<'minecraft'> {
