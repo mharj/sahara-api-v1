@@ -1,6 +1,6 @@
+import {OpenWeatherMapData} from './OpenWeatherMap';
 import {IWebsocketRequestBase} from './wsRequest';
 import {IWebsocketResponseBase} from './wsResponse';
-import {OpenWeatherMapData} from './OpenWeatherMap';
 
 export interface IWeatherRequest extends IWebsocketRequestBase<'weather'> {
 	type: 'sub' | 'unsub';

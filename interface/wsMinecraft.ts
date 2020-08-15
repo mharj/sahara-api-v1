@@ -1,3 +1,4 @@
+// tslint:disable: array-type
 import {IWebsocketRequestBase} from './wsRequest';
 import {IWebsocketResponseBase} from './wsResponse';
 
@@ -6,6 +7,7 @@ import {IWebsocketResponseBase} from './wsResponse';
 export interface IHandshakeData {
 	description: {
 		text: string;
+		// tslint:disable-next-line: array-type
 		extra?: {
 			color?: string;
 			text: string;
