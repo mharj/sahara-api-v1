@@ -1,4 +1,5 @@
 import * as jwt from 'jsonwebtoken';
+import {isApiError} from '../interface/apiError';
 import {IOpenIDConfig} from '../interface/openIDConfig';
 import {IAuthKeys, IRefreshGrant} from './auth';
 import {buildNonce} from './nonce';
@@ -36,6 +37,20 @@ export abstract class CommonClient {
 		}
 		throw new Error(`Can't get access token`);
 	}
+	protected async getErrorMessage(res: Response) {
+		let errorMessage = 'http error: ' + res.status;
+		const contentType = res.headers.get('Content-type') || '';
+		if (contentType.startsWith('application/json')) {
+			const body = await res.json();
+			if (isApiError(body)) {
+				errorMessage = body.error;
+				if (body.error_description) {
+					errorMessage += ': ' + body.error_description;
+				}
+			}
+		}
+		return errorMessage;
+	}
 	private isValidToken(token: string | undefined) {
 		if (!token) {
 			return false;
@@ -66,8 +81,8 @@ export abstract class CommonClient {
 		headers.set('Content-length', '' + body.length);
 		const res = await this.fetchClient(config.token_endpoint, {method: 'POST', body, headers});
 		if (res.status !== 200) {
-			console.log(await res.text());
-			throw new Error('asd' + res.status);
+			const message = await this.getErrorMessage(res);
+			throw new Error(message);
 		}
 		const data = await res.json();
 		if (data.access_token) {
