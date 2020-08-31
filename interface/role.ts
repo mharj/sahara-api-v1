@@ -16,6 +16,8 @@ export const RoleNames = [
 	'RAID_LIST',
 	'RAID_RUN',
 	'SONOS_CONTROL',
+	'TRANSLATION_LIST',
+	'TRANSLATION_MODIFY',
 ] as const;
 
 export type RoleName = typeof RoleNames[number];

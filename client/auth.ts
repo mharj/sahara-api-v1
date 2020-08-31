@@ -20,6 +20,7 @@ interface IPasswordGrant {
 }
 
 export interface IRefreshGrant {
+	grant_type: 'refresh_token';
 	client_id: string;
 	refresh_token: string;
 	nonce: string;
@@ -73,11 +74,11 @@ export class AuthClient extends CommonClient {
 		return data;
 	}
 	public async authPassword(
-		{username, password, clientId, nonce, scope}: {clientId: string; username: string; scope: string; password: string; nonce?: string},
+		{username, password, nonce, scope}: {username: string; scope: string; password: string; nonce?: string},
 		appToken: string,
 	): Promise<IAuthKeys> {
 		const payload: IPasswordGrant = {
-			client_id: clientId,
+			client_id: this.clientId,
 			grant_type: 'password',
 			password,
 			scope,
@@ -103,7 +104,7 @@ export class AuthClient extends CommonClient {
 		}
 		return {
 			accessToken: data.access_token,
-			clientId,
+			clientId: this.clientId,
 			refreshToken: data.refresh_token,
 		};
 	}
