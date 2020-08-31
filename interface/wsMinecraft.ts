@@ -43,7 +43,14 @@ export interface IMinecreaftRequest extends IWebsocketRequestBase<'minecraft'> {
 	type: 'sub' | 'unsub';
 }
 
-export interface IMinecraftResponse extends IWebsocketResponseBase<'minecraft'> {
+interface IMinecraftDataResponse extends IWebsocketResponseBase<'minecraft'> {
 	type: 'data';
 	data: IMinecraftData;
 }
+
+interface IMinecraftDiscoveryResponse extends IWebsocketResponseBase<'minecraft'> {
+	type: 'discovery';
+	data: string[];
+}
+
+export type IMinecraftResponse = IMinecraftDataResponse | IMinecraftDiscoveryResponse;

@@ -16,6 +16,14 @@ export interface IMinecraft {
 
 export type Minecraft = Doc<IMinecraft>;
 
+export interface ICreateMinecraft {
+	disabled?: boolean;
+	name: string;
+	port: number;
+	visible?: boolean;
+	index: number;
+}
+
 // Actions
 export enum Action {
 	SUB = 'sub',
