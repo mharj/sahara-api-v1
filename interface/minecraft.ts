@@ -3,6 +3,7 @@ import {ChannelAck} from './ack';
 import {ChannelAct} from './act';
 import {ChannelData} from './data';
 import {ChannelError} from './error';
+import {Doc} from './mongo';
 
 export interface IMinecraft {
 	disabled: boolean;
@@ -12,6 +13,8 @@ export interface IMinecraft {
 	visible: boolean;
 	index: number;
 }
+
+export type Minecraft = Doc<IMinecraft>;
 
 // Actions
 export enum Action {
