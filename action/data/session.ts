@@ -1,4 +1,3 @@
-import {IUserSessionModel} from '../../../schemas/userSession';
 import {ChannelEnum} from '../../interface';
 import {Action, DataActions, DataKeys, ISessionData} from '../../interface/session';
 
@@ -9,7 +8,7 @@ export const data = (action: Action): DataKeys => {
 };
 
 // FIX: THIS to use only ID
-export const sessionDeleteAction = ({_id}: IUserSessionModel): DataActions => {
+export const sessionDeleteAction = ({_id}: ISessionData): DataActions => {
 	return {_channel: ChannelEnum.SESSION, _data: Action.DELETE, _id};
 };
 
