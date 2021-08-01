@@ -21,3 +21,10 @@ export const RoleNames = [
 ] as const;
 
 export type RoleName = typeof RoleNames[number];
+
+export interface IApiRole {
+	_id: string;
+	name: string;
+	description?: string;
+	internal: boolean;
+}
