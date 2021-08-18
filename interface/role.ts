@@ -22,6 +22,10 @@ export const RoleNames = [
 
 export type RoleName = typeof RoleNames[number];
 
+export function isRoleName(value: any): value is RoleName {
+	return typeof value === 'string' && RoleNames.findIndex((name) => name === value) !== -1;
+}
+
 export interface IApiRole {
 	_id: string;
 	name: string;
