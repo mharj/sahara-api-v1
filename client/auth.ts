@@ -65,7 +65,8 @@ export class AuthClient extends CommonClient {
 		headers.set('Content-length', '' + body.length);
 		const res = await this.fetchClient(config.token_endpoint, {method: 'POST', body, headers});
 		if (res.status !== 200) {
-			throw new Error('http error:' + res.status);
+			const message = await this.getErrorMessage(res);
+			throw new Error(message);
 		}
 		const data = await res.json();
 		if (!isValidTokenResponse(data)) {
