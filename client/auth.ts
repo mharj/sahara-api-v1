@@ -33,19 +33,7 @@ export interface IAuthKeys {
 }
 
 export class AuthClient extends CommonClient {
-	public async authClientCredentials({
-		clientId,
-		clientSecret,
-		nonce,
-		scope,
-		redirectUri,
-	}: {
-		clientId: string;
-		nonce?: string;
-		clientSecret?: string;
-		scope: string;
-		redirectUri: string;
-	}) {
+	public async authClientCredentials({clientId, clientSecret, nonce, scope, redirectUri}: {clientId: string; nonce?: string; clientSecret?: string; scope: string; redirectUri: string}) {
 		const payload: IClientCredentials = {
 			client_id: clientId,
 			grant_type: 'client_credentials',
@@ -74,10 +62,8 @@ export class AuthClient extends CommonClient {
 		}
 		return data;
 	}
-	public async authPassword(
-		{username, password, nonce, scope}: {username: string; scope: string; password: string; nonce?: string},
-		appToken: string,
-	): Promise<IAuthKeys> {
+
+	public async authPassword({username, password, nonce, scope}: {username: string; scope: string; password: string; nonce?: string}, appToken: string): Promise<IAuthKeys> {
 		const payload: IPasswordGrant = {
 			client_id: this.clientId,
 			grant_type: 'password',

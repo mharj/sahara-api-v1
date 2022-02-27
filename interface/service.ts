@@ -7,7 +7,6 @@ import {ChannelError} from './error';
 export enum Action {
 	REGISTER = 'reg',
 	UNREGISTER = 'unreg',
-
 }
 
 export interface IServiceChannel extends IChannel<ChannelEnum> {

@@ -1,4 +1,4 @@
-import { IApiRole } from "./role";
+import {IApiRole} from './role';
 
 export interface IUserMe {
 	email: string;

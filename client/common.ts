@@ -22,6 +22,7 @@ export abstract class CommonClient {
 		this.redirectUri = redirectUri;
 		this.clientId = clientId;
 	}
+
 	protected async getConfig(): Promise<IOpenIDConfig> {
 		const req = new Request(`${this.issuerUrl}/.well-known/openid-configuration`);
 		const res = await this.fetchClient(req);
@@ -37,6 +38,7 @@ export abstract class CommonClient {
 		}
 		throw new Error(`Can't get access token`);
 	}
+
 	protected async getErrorMessage(res: Response) {
 		let errorMessage = 'http error: ' + res.status;
 		const contentType = res.headers.get('Content-type') || '';
@@ -51,6 +53,7 @@ export abstract class CommonClient {
 		}
 		return errorMessage;
 	}
+
 	private isValidToken(token: string | undefined) {
 		if (!token) {
 			return false;
@@ -62,6 +65,7 @@ export abstract class CommonClient {
 		}
 		return true;
 	}
+
 	private async getNewAccessToken(authKeys: IAuthKeys, appToken: string): Promise<string> {
 		if (!authKeys.refreshToken) {
 			throw new Error('no refresh token');
