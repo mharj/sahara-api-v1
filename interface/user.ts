@@ -1,4 +1,4 @@
-import {IApiRole} from './role';
+import {RoleName} from './role';
 
 export interface IUserMe {
 	email: string;
@@ -18,5 +18,5 @@ export interface IApiUserDetail {
 	email: string;
 	username: string;
 	disabled: boolean;
-	roles: IApiRole[];
+	roles: RoleName[];
 }
