@@ -20,3 +20,10 @@ export interface IApiUserDetail {
 	disabled: boolean;
 	roles: RoleName[];
 }
+
+export interface IApiCreateUser {
+	email: string;
+	username: string;
+	disabled: boolean;
+	roles: RoleName[];
+}

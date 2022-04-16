@@ -24,7 +24,7 @@ export const RoleNames = [
 
 export type RoleName = typeof RoleNames[number];
 
-export function isRoleName(value: any): value is RoleName {
+export function isRoleName(value: unknown): value is RoleName {
 	return typeof value === 'string' && RoleNames.findIndex((name) => name === value) !== -1;
 }
 
