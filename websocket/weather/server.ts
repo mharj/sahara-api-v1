@@ -7,6 +7,10 @@ export interface WeatherData {
 	dt: number;
 }
 
+export function isWeatherData(data: unknown): data is WeatherData {
+	return typeof data === 'object' && data !== null && 'id' in data && 'icon' in data && 'name' in data && 'temp' in data && 'wid' in data && 'dt' in data;
+}
+
 interface Weather {
 	stype: 'weather';
 	data: WeatherData;
